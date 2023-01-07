@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class TimeText : MonoBehaviour
 {
+    public GameObject Player;
     public Text timeText;
-    private float surviveTime;
-    private bool isArrived;
+    public static float surviveTime;
+    public static bool isArrived;
     void Start()
     {
         surviveTime = 0;
@@ -20,7 +21,6 @@ public class TimeText : MonoBehaviour
         //하트가 0개면 비활성화
         //도착지점에 닿으면 시간 정지
         
-        
         //if(하트 0개){
         //    timeText.SetActive(false);
         //}
@@ -28,13 +28,13 @@ public class TimeText : MonoBehaviour
             surviveTime += Time.deltaTime;
             timeText.text = "Time: " + surviveTime.ToString("N1");
         }
-        
-
     }
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Destination"){
             isArrived = true;
+            Player.GetComponent<PlayerMovement>().enabled = false;
+            Player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0); 
         }
     }
 }
