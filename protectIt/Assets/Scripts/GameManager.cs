@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.GetComponent<EffectControl>().playRandomBGM();
         UI_SoundControl.game_started = true; // 게임 시작 - 기존 오디오 소스 파괴
         StartCoroutine(endGameStarted());
         Time.timeScale = 1;

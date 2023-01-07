@@ -13540,6 +13540,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgm_audio_source: {fileID: 1351346542}
   effect_audio_source: {fileID: 1930799179}
+  game_bgm:
+  - {fileID: 8300000, guid: e32a9ebd542ba914c91868e72e9cc4c1, type: 3}
+  - {fileID: 8300000, guid: ae80bcc7586602b4a8a274600197acce, type: 3}
   ending_bgm: {fileID: 8300000, guid: 74edb957518d61a4d9b6a2242a5148c9, type: 3}
   gameover_eff: {fileID: 8300000, guid: 05908266590c8554bbd23bc01aa28de9, type: 3}
   gameclear_eff: {fileID: 8300000, guid: e1ac0f7e45e6e53448979bac50cffa1e, type: 3}

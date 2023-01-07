@@ -6,6 +6,7 @@ public class EffectControl : MonoBehaviour
 {
     [SerializeField] AudioSource bgm_audio_source;
     [SerializeField] AudioSource effect_audio_source;
+    [SerializeField] AudioClip[] game_bgm;
     [SerializeField] AudioClip ending_bgm;
     [SerializeField] AudioClip gameover_eff;
     [SerializeField] AudioClip gameclear_eff;
@@ -15,6 +16,12 @@ public class EffectControl : MonoBehaviour
     [SerializeField] AudioClip remove_eff; // remove obstacle
     [SerializeField] AudioClip crash_eff;
     [SerializeField] AudioClip ui_eff;
+
+    public void playRandomBGM()
+    {
+        bgm_audio_source.clip = game_bgm[Random.Range(0,2)];
+        bgm_audio_source.Play();
+    }
 
     public void playEndingBGM()
     {
