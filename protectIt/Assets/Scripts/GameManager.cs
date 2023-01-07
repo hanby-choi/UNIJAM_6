@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(endGameStarted());
         Time.timeScale = 1;
         game_clear_img = game_clear.GetComponent<Image>();
-        high_score = PlayerPrefs.GetFloat("high_score", 0);
+        //PlayerPrefs.DeleteKey("high_score");
+        high_score = PlayerPrefs.GetFloat("high_score", 999);
     }
 
     // Update is called once per frame
@@ -98,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator endGameStarted()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         UI_SoundControl.game_started = false;
     }
 
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour
     {
         current_score = TimeText.surviveTime;
         heart[HeartSystem.Hp].SetActive(true); // set heart img
-        if (current_score > high_score)
+        if (current_score < high_score)
         {
             high_score = current_score;
             PlayerPrefs.SetFloat("high_score", high_score); // renew highest score
@@ -125,7 +126,6 @@ public class GameManager : MonoBehaviour
     public void onClickResume()
     {
         Time.timeScale = 1;
-        // 효과음 재생
     }
 
     public void onClickRetry()
