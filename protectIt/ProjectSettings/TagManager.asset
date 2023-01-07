@@ -9,6 +9,8 @@ TagManager:
   - Item
   - Trigger
   - Destination
+  - Item_A
+  - Item_B
   layers:
   - Default
   - TransparentFX
