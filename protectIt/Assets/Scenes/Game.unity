@@ -108038,7 +108038,7 @@ MonoBehaviour:
   - {fileID: 522756465}
   - {fileID: 922931762}
   - {fileID: 2138153744}
-  delayTime: 1
+  delayCount: 0
 --- !u!114 &1928982482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108053,10 +108053,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 1928982486}
   playerSpeed: 4
-  changeRateMin: 1
-  changeRateMax: 10
+  changeRateMin: 100
+  changeRateMax: 1000
   cam: {fileID: 42879901}
-  rotationSpeed: 180
+  rotationSpeed: 150
 --- !u!114 &1928982483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109368,6 +109368,10 @@ PrefabInstance:
     - target: {fileID: 451168650678043926, guid: 200feaa5c19b9fd4a8870e0acd3ca11e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 451168651211678395, guid: 200feaa5c19b9fd4a8870e0acd3ca11e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 200feaa5c19b9fd4a8870e0acd3ca11e, type: 3}

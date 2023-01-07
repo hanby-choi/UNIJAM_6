@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D playerRigidbody;  //  이동에 사용할 rigidbody component
     private SpriteRenderer playerSRenderer; //Xflip에 사용할 객체
-    private Vector2 playerVelocity; //  player의 속도벡터
+    public Vector2 playerVelocity; //  player의 속도벡터
     private Vector2 direction;      //player의 방향벡터
     public float playerSpeed;       // 플레이어 이동 속력
     public float changeRateMin;    //  최소 방향전환 주기
