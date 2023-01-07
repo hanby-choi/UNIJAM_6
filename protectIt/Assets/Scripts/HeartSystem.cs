@@ -6,29 +6,25 @@ public class HeartSystem : MonoBehaviour
 {
     public GameObject[] heartUI;
     public static int Hp;
-    public float delayTime;
+    public float delayCount;
+    SpriteRenderer spriteRenderer;
     bool isCrashed;
     bool isDelay;
+
     void Start()
     {
         Hp = 3;
         isCrashed = false;
         isDelay = false;
         heartUI[Hp].SetActive(true);
+        spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
     }
-
     
     void Update()
     {
-        if(Hp == 0){
-            Debug.Log("Game Over");
-            //씬 전환 등 몇가지 더
-        }
-
         if(isCrashed == true){
             isDelay = true;
-            StartCoroutine(OnTriggerStay2D());
-            
+            StartCoroutine(invincibleTime());
             isCrashed = false;
         }
     }
@@ -54,18 +50,25 @@ public class HeartSystem : MonoBehaviour
         for (int i=0; i<4; i++)
         {
             if (i == Hp)
-            {
                 heartUI[i].SetActive(true);
-            } 
             else
-            {
                 heartUI[i].SetActive(false);
-            }
         }
     }
 
-    IEnumerator OnTriggerStay2D() {
-        yield return new WaitForSeconds(delayTime);
+    IEnumerator invincibleTime() {
+        int countTime = 0;
+        while (countTime < delayCount)
+        {
+            if(countTime % 2 == 0)
+                spriteRenderer.color = new Color32(255, 255, 255, 90);
+            else
+                spriteRenderer.color = new Color32(255, 255, 255, 255);
+            yield return new WaitForSeconds(0.2f);
+            countTime++;
+        }
+        spriteRenderer.color = new Color32(255, 255, 255, 255);
         isDelay = false;
+        yield return null;
     }
 }
