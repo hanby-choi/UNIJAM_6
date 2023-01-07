@@ -20,7 +20,7 @@ public class TimeText : MonoBehaviour
     void Update()
     {
         //하트가 0개이거나 도착지점에 닿으면 시간 정지
-        if (HeartSystem.Hp == 0)
+        if (HeartSystem.Hp <= 0)
         {
             Player.GetComponent<PlayerMovement>().enabled = false;
             Player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);

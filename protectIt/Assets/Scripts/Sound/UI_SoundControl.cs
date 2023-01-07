@@ -6,10 +6,10 @@ public class UI_SoundControl : MonoBehaviour
 {
     GameObject SoundManager;
     [SerializeField] GameObject BGM_audioSource;
-    [SerializeField] GameObject Effect_audioSource;
+    //[SerializeField] GameObject Effect_audioSource;
     AudioSource bgm_audio_source;
     AudioSource effect_audio_source;
-    public bool game_started = false;
+    public static bool game_started = false;
 
     private void Awake()
     {
@@ -28,12 +28,12 @@ public class UI_SoundControl : MonoBehaviour
     {
         SoundManager = gameObject;
         bgm_audio_source = BGM_audioSource.GetComponent<AudioSource>();
-        effect_audio_source = Effect_audioSource.GetComponent<AudioSource>();
+        //effect_audio_source = Effect_audioSource.GetComponent<AudioSource>();
 
-        if (bgm_audio_source.isPlaying) return;
-        else
+        if (bgm_audio_source.isPlaying) return; // 이미 브금이 재생중이면 스킵
+        else // 브금이 나오지 않고 있다면
         {
-            bgm_audio_source.Play();
+            bgm_audio_source.Play(); // 브금 재생
             DontDestroyOnLoad(SoundManager);
         }
     }
@@ -44,11 +44,6 @@ public class UI_SoundControl : MonoBehaviour
         {
             StartCoroutine(destroy_sound());
         }
-    }
-
-    public void playEffectAudio()
-    {
-        effect_audio_source.Play();
     }
 
     public IEnumerator destroy_sound()
