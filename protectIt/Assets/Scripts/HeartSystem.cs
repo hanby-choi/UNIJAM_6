@@ -45,7 +45,7 @@ public class HeartSystem : MonoBehaviour
         }
     }
 
-    void setHeart()
+    public void setHeart()
     {
         for (int i=0; i<4; i++)
         {

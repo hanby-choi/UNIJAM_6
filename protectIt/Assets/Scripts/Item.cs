@@ -29,13 +29,18 @@ public class Item : MonoBehaviour
         if(isEffective == false){
             if(other.tag == "Item_A"){
                 other.gameObject.SetActive(false);
-                HeartSystem.Hp++;
+                if(HeartSystem.Hp < 3){
+                    HeartSystem.Hp++;
+                    player.GetComponent<HeartSystem>().setHeart();
+                }
             }
 
             if(other.tag == "Item_B"){
                 other.gameObject.SetActive(false);  //닿은 아이템 비활성화
-                player.GetComponent<PlayerMovement>().playerRigidbody.velocity = player.GetComponent<PlayerMovement>().playerRigidbody.velocity * increaseRate;  //이동속도 증가(효과)
+                
+                player.GetComponent<PlayerMovement>().playerVelocity = player.GetComponent<PlayerMovement>().playerVelocity * increaseRate;  //이동속도 증가(효과)
                 isCrashed = true;                   //충돌 처리
+                Debug.Log("인식됨.");
             }
         }
     }
@@ -43,7 +48,7 @@ public class Item : MonoBehaviour
     IEnumerator OnTriggerEnter2D(){
         yield return new WaitForSeconds(itemDelayTime); //일정 시간 대기
         isEffective = false;                            //아이템 효과 없어짐 처리
-        player.GetComponent<PlayerMovement>().playerRigidbody.velocity = player.GetComponent<PlayerMovement>().playerRigidbody.velocity / increaseRate;           //이동속도 복원
+        player.GetComponent<PlayerMovement>().playerVelocity = player.GetComponent<PlayerMovement>().playerVelocity / increaseRate;           //이동속도 복원
     }
 }
 
@@ -51,4 +56,4 @@ public class Item : MonoBehaviour
 // 각자의 효과를 얻게됨.
 
 //B 타입 아이템 -> 이속 몇 초간 30% 증가
-//GameObject.Find("Character").GetComponent<PlayerMovement>().playerRigidbody.velocity
+//GameObject.Find("Character").GetComponent<PlayerMovement>().playerVelocity
