@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class DestroyObstacle : MonoBehaviour
 {
-    bool isCatchable;       //Trigger와의 충돌 여부 확인하는 변수
+    /*bool isCatchable;       //Trigger와의 충돌 여부 확인하는 변수
     void Start()
     {
         isCatchable = false;
     }
 
+
+    
     void Update()
     {
         if(isCatchable == true){                            //Trigger와 충돌한 상태이면
             if(Input.GetKey(KeyCode.Space) == true){    //이 상태에서 space bar를 누르면
-                //파괴 ~~~
+                .SetActive(false);
             }
         }
     }
@@ -28,5 +30,13 @@ public class DestroyObstacle : MonoBehaviour
     void OnTriggerExit2D(Collider2D other){         //Trigger로 부터 분리되면 isCatchable을 false로 설정
         if(other.tag == "Trigger")
             isCatchable = false;
+    }*/
+    void OnTriggerStay2D(Collider2D other){
+        if(Input.GetKey(KeyCode.Space) == true){
+            if(other.tag == "Trigger"){
+                    other.gameObject.SetActive(false);
+                    Debug.Log("인식됨");
+            }
+       }
     }
 }
