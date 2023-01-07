@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         if (HeartSystem.Hp == 0)
         {
             gameOver();
+            Time.timeScale = 0;
         }
         if (TimeText.isArrived && !isClear)
         {
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
         }
         game_clear_img.color = new Color(255, 255, 255, 0.8f);
         game_clear.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public IEnumerator FadeIn()
