@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         game_clear_img = game_clear.GetComponent<Image>();
         high_score = PlayerPrefs.GetFloat("high_score", 0);
     }
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HeartSystem.Hp == 0)
+        if (HeartSystem.Hp <= 0)
         {
             gameOver();
             Time.timeScale = 0;
@@ -103,13 +104,26 @@ public class GameManager : MonoBehaviour
         high_score_txt.text = "최고 기록: " + high_score.ToString("N1") +"초";
     }
 
+    public void onClickPause()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void onClickResume()
+    {
+        Time.timeScale = 1;
+        // 효과음 재생
+    }
+
     public void onClickRetry()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Map");
     }
 
     public void onClickReturn()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Start");
     }
 }
