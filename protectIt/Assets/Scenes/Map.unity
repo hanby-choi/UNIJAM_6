@@ -1794,7 +1794,7 @@ GameObject:
   - component: {fileID: 564186660}
   - component: {fileID: 564186659}
   m_Layer: 0
-  m_Name: Building
+  m_Name: Building_Collider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
