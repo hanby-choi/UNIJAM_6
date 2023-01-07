@@ -46,7 +46,7 @@ public class HeartSystem : MonoBehaviour
                 isCrashed = true;
                 setHeart(); //UI 하트 개수 감소
             }
-        }   
+        }
     }
 
     void setHeart()
