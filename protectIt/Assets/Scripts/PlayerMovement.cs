@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
         if(Input.GetKey(KeyCode.RightArrow)){
             transform.Rotate(0, 0, Time.deltaTime * rotationSpeed);
