@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (HeartSystem.Hp == 0)
+        {
+            gameOver();
+        }
         if (TimeText.isArrived && !isClear)
         {
             gameClear();
@@ -54,6 +58,7 @@ public class GameManager : MonoBehaviour
 
     void gameOver()
     {
+        heartUI.SetActive(false);
         // play effect sound
         game_over_popup.SetActive(true);
     }
