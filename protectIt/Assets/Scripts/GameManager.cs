@@ -9,25 +9,33 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject game_clear;
     [SerializeField] GameObject game_clear_popup;
     [SerializeField] GameObject game_over_popup;
+    [SerializeField] GameObject[] heart;
+    [SerializeField] GameObject heartUI;
     [SerializeField] Text score_txt;
     [SerializeField] Text high_score_txt;
 
     private Image game_clear_img;
-    private int high_score;
-    private int current_score;
+    private float high_score;
+    private float current_score;
     private bool isClear = false;
+    private bool isSceneEnd = false;
 
     // Start is called before the first frame update
     void Start()
     {
         game_clear_img = game_clear.GetComponent<Image>();
-        high_score = PlayerPrefs.GetInt("high_score", 0);
+        high_score = PlayerPrefs.GetFloat("high_score", 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isClear && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)))
+        if (TimeText.isArrived && !isClear)
+        {
+            gameClear();
+            isClear = true;
+        }
+        if (isSceneEnd && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)))
         {
             game_clear_popup.SetActive(true); // show score board
             setScore();
@@ -37,10 +45,11 @@ public class GameManager : MonoBehaviour
 
     void gameClear()
     {
+        heartUI.SetActive(false);
         // play effect sound
         game_clear.SetActive(true);
         StartCoroutine(FadeIn()); // fade in
-        isClear = true;
+        isSceneEnd = true;
     }
 
     void gameOver()
@@ -75,15 +84,16 @@ public class GameManager : MonoBehaviour
 
     void setScore()
     {
-        // set heart img
+        current_score = TimeText.surviveTime;
+        heart[HeartSystem.Hp].SetActive(true); // set heart img
         if (current_score > high_score)
         {
             high_score = current_score;
-            PlayerPrefs.SetInt("high_score", high_score); // renew highest score
+            PlayerPrefs.SetFloat("high_score", high_score); // renew highest score
             PlayerPrefs.Save();
         }
-        score_txt.text = current_score.ToString() + "초 만에 집에 데려다 주었습니다!";
-        high_score_txt.text = "최고 기록: " + high_score.ToString();
+        score_txt.text = current_score.ToString("N1") + "초 만에 집에 데려다 주었습니다!";
+        high_score_txt.text = "최고 기록: " + high_score.ToString("N1") +"초";
     }
 
     public void onClickRetry()
