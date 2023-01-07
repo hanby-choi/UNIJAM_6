@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class DestroyObstacle : MonoBehaviour
 {
+    [SerializeField] GameObject AudioManager;
     /*bool isCatchable;       //Trigger와의 충돌 여부 확인하는 변수
     void Start()
     {
         isCatchable = false;
     }
 
-
-    
     void Update()
     {
         if(isCatchable == true){                            //Trigger와 충돌한 상태이면
@@ -35,7 +34,7 @@ public class DestroyObstacle : MonoBehaviour
         if(Input.GetKey(KeyCode.Space) == true){
             if(other.tag == "Trigger"){
                 other.gameObject.transform.parent.gameObject.SetActive(false);
-                Debug.Log("인식됨");
+                AudioManager.GetComponent<EffectControl>().playRemove();
             }
         }
     }

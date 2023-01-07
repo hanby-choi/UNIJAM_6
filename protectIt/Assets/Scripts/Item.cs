@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] GameObject AudioManager;
     public GameObject player;
     public float increaseRate;      //이속 증가율
     public float itemDelayTime;     //아이템 지속시간(B타입에만 해당)
@@ -28,6 +29,7 @@ public class Item : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(isEffective == false){
             if(other.tag == "Item_A"){
+                AudioManager.GetComponent<EffectControl>().playHeal();
                 other.gameObject.SetActive(false);
                 if(HeartSystem.Hp < 3){
                     HeartSystem.Hp++;
@@ -37,7 +39,7 @@ public class Item : MonoBehaviour
 
             if(other.tag == "Item_B"){
                 other.gameObject.SetActive(false);  //닿은 아이템 비활성화
-                
+                AudioManager.GetComponent<EffectControl>().playCrash();
                 player.GetComponent<PlayerMovement>().playerVelocity = player.GetComponent<PlayerMovement>().playerVelocity * increaseRate;  //이동속도 증가(효과)
                 isCrashed = true;                   //충돌 처리
                 Debug.Log("인식됨.");

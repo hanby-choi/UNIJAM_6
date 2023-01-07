@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HeartSystem : MonoBehaviour
 {
+    [SerializeField] GameObject AudioManager;
     public GameObject[] heartUI;
     public static int Hp;
     public float delayCount;
@@ -23,6 +24,7 @@ public class HeartSystem : MonoBehaviour
     void Update()
     {
         if(isCrashed == true){
+            AudioManager.GetComponent<EffectControl>().playCrash();
             isDelay = true;
             StartCoroutine(invincibleTime());
             isCrashed = false;

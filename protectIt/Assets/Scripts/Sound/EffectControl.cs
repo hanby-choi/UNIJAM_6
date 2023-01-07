@@ -43,7 +43,7 @@ public class EffectControl : MonoBehaviour
     {
         effect_audio_source.PlayOneShot(dash_eff);
     }
-    public void playHealr()
+    public void playHeal()
     {
         effect_audio_source.PlayOneShot(heal_eff);
     }
