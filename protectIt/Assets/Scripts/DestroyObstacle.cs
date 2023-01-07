@@ -34,9 +34,9 @@ public class DestroyObstacle : MonoBehaviour
     void OnTriggerStay2D(Collider2D other){
         if(Input.GetKey(KeyCode.Space) == true){
             if(other.tag == "Trigger"){
-                    other.gameObject.SetActive(false);
-                    Debug.Log("인식됨");
+                other.gameObject.transform.parent.gameObject.SetActive(false);
+                Debug.Log("인식됨");
             }
-       }
+        }
     }
 }
