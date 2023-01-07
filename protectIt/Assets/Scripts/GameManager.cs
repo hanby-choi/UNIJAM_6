@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameObject AudioManager;
     [SerializeField] GameObject game_clear;
     [SerializeField] GameObject game_clear_popup;
     [SerializeField] GameObject game_over_popup;
@@ -18,11 +19,14 @@ public class GameManager : MonoBehaviour
     private float high_score;
     private float current_score;
     private bool isClear = false;
+    private bool isOver = false;
     private bool isSceneEnd = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        UI_SoundControl.game_started = true; // 게임 시작 - 기존 오디오 소스 파괴
+        StartCoroutine(endGameStarted());
         Time.timeScale = 1;
         game_clear_img = game_clear.GetComponent<Image>();
         high_score = PlayerPrefs.GetFloat("high_score", 0);
@@ -31,10 +35,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HeartSystem.Hp <= 0)
+        if (HeartSystem.Hp <= 0 && !isOver && !TimeText.isArrived)
         {
             gameOver();
             Time.timeScale = 0;
+            isOver = true;
         }
         if (TimeText.isArrived && !isClear)
         {
@@ -51,8 +56,8 @@ public class GameManager : MonoBehaviour
 
     void gameClear()
     {
+        AudioManager.GetComponent<EffectControl>().playEndingBGM();
         heartUI.SetActive(false);
-        // play effect sound
         game_clear.SetActive(true);
         StartCoroutine(FadeIn()); // fade in
         isSceneEnd = true;
@@ -61,7 +66,7 @@ public class GameManager : MonoBehaviour
     void gameOver()
     {
         heartUI.SetActive(false);
-        // play effect sound
+        AudioManager.GetComponent<EffectControl>().playGameOver(); // play effect sound
         game_over_popup.SetActive(true);
     }
 
@@ -90,6 +95,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public IEnumerator endGameStarted()
+    {
+        yield return new WaitForSeconds(0.5f);
+        UI_SoundControl.game_started = false;
+    }
+
     void setScore()
     {
         current_score = TimeText.surviveTime;
@@ -99,6 +110,7 @@ public class GameManager : MonoBehaviour
             high_score = current_score;
             PlayerPrefs.SetFloat("high_score", high_score); // renew highest score
             PlayerPrefs.Save();
+            AudioManager.GetComponent<EffectControl>().playGameClear(); // play effect sound
         }
         score_txt.text = current_score.ToString("N1") + "초 만에 집에 데려다 주었습니다!";
         high_score_txt.text = "최고 기록: " + high_score.ToString("N1") +"초";

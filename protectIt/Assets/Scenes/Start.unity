@@ -242,11 +242,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 174970107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf05da087ace1ed449c146c8c71ec596, type: 3}
+  m_Script: {fileID: 11500000, guid: 586475554d8ea3a44a8f6612732f2531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 0}
-  slider: {fileID: 0}
+  BGM_audioSource: {fileID: 1206666087}
 --- !u!1 &181365428
 GameObject:
   m_ObjectHideFlags: 0
