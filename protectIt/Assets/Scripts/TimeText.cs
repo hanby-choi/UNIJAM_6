@@ -10,6 +10,7 @@ public class TimeText : MonoBehaviour
     public Text timeText;
     public static float surviveTime;
     public static bool isArrived;
+    bool isOver = false;
     void Start()
     {
         surviveTime = 0;
@@ -18,13 +19,14 @@ public class TimeText : MonoBehaviour
 
     void Update()
     {
-        //하트가 0개면 비활성화
-        //도착지점에 닿으면 시간 정지
-        
-        //if(하트 0개){
-        //    timeText.SetActive(false);
-        //}
-        if(isArrived == false){
+        //하트가 0개이거나 도착지점에 닿으면 시간 정지
+        if (HeartSystem.Hp == 0)
+        {
+            Player.GetComponent<PlayerMovement>().enabled = false;
+            Player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            isOver = true;
+        }
+        if(!isArrived && !isOver){
             surviveTime += Time.deltaTime;
             timeText.text = "Time: " + surviveTime.ToString("N1");
         }
