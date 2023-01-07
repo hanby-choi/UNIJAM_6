@@ -13,15 +13,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text high_score_txt;
 
     private Image game_clear_img;
-    private int high_score;
-    private int current_score;
+    private float high_score;
+    private float current_score;
     private bool isClear = false;
 
     // Start is called before the first frame update
     void Start()
     {
         game_clear_img = game_clear.GetComponent<Image>();
-        high_score = PlayerPrefs.GetInt("high_score", 0);
+        high_score = PlayerPrefs.GetFloat("high_score", 0);
     }
 
     // Update is called once per frame
@@ -75,15 +75,16 @@ public class GameManager : MonoBehaviour
 
     void setScore()
     {
+        current_score = TimeText.surviveTime;
         // set heart img
         if (current_score > high_score)
         {
             high_score = current_score;
-            PlayerPrefs.SetInt("high_score", high_score); // renew highest score
+            PlayerPrefs.SetFloat("high_score", high_score); // renew highest score
             PlayerPrefs.Save();
         }
-        score_txt.text = current_score.ToString() + "초 만에 집에 데려다 주었습니다!";
-        high_score_txt.text = "최고 기록: " + high_score.ToString();
+        score_txt.text = current_score.ToString("N1") + "초 만에 집에 데려다 주었습니다!";
+        high_score_txt.text = "최고 기록: " + high_score.ToString("N1");
     }
 
     public void onClickRetry()

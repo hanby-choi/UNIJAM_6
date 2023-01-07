@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    public GameObject player;
     public float increaseRate;      //이속 증가율
     public float itemDelayTime;     //아이템 지속시간(B타입에만 해당)
     private bool isEffective;       //아이템 효과가 나타나는지 여부
@@ -28,12 +29,12 @@ public class Item : MonoBehaviour
         if(isEffective == false){
             if(other.tag == "Item_A"){
                 other.gameObject.SetActive(false);
-                GameObject.Find("Character").GetComponent<HeartSystem>().Hp++;
+                player.GetComponent<HeartSystem>().Hp++;
             }
 
             if(other.tag == "Item_B"){
                 other.gameObject.SetActive(false);  //닿은 아이템 비활성화
-                GameObject.Find("Character").GetComponent<PlayerMovement>().playerRigidbody.velocity = GameObject.Find("Character").GetComponent<PlayerMovement>().playerRigidbody.velocity * increaseRate;  //이동속도 증가(효과)
+                player.GetComponent<PlayerMovement>().playerRigidbody.velocity = player.GetComponent<PlayerMovement>().playerRigidbody.velocity * increaseRate;  //이동속도 증가(효과)
                 isCrashed = true;                   //충돌 처리
             }
         }
@@ -42,7 +43,7 @@ public class Item : MonoBehaviour
     IEnumerator OnTriggerEnter2D(){
         yield return new WaitForSeconds(itemDelayTime); //일정 시간 대기
         isEffective = false;                            //아이템 효과 없어짐 처리
-        GameObject.Find("Character").GetComponent<PlayerMovement>().playerRigidbody.velocity = GameObject.Find("Character").GetComponent<PlayerMovement>().playerRigidbody.velocity / increaseRate;           //이동속도 복원
+        player.GetComponent<PlayerMovement>().playerRigidbody.velocity = player.GetComponent<PlayerMovement>().playerRigidbody.velocity / increaseRate;           //이동속도 복원
     }
 }
 

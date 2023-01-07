@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class TimeText : MonoBehaviour
 {
     public Text timeText;
-    private float surviveTime;
+    public static float surviveTime;
     private bool isArrived;
     void Start()
     {
@@ -28,8 +28,6 @@ public class TimeText : MonoBehaviour
             surviveTime += Time.deltaTime;
             timeText.text = "Time: " + surviveTime.ToString("N1");
         }
-        
-
     }
 
     void OnTriggerEnter2D(Collider2D other){
