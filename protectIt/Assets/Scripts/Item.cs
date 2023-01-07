@@ -29,7 +29,7 @@ public class Item : MonoBehaviour
         if(isEffective == false){
             if(other.tag == "Item_A"){
                 other.gameObject.SetActive(false);
-                player.GetComponent<HeartSystem>().Hp++;
+                HeartSystem.Hp++;
             }
 
             if(other.tag == "Item_B"){

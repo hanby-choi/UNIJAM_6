@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class TimeText : MonoBehaviour
 {
+    public GameObject Player;
     public Text timeText;
     public static float surviveTime;
-    private bool isArrived;
+    public static bool isArrived;
     void Start()
     {
         surviveTime = 0;
@@ -32,6 +33,8 @@ public class TimeText : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Destination"){
             isArrived = true;
+            Player.GetComponent<PlayerMovement>().enabled = false;
+            Player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0); 
         }
     }
 

@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject game_clear;
     [SerializeField] GameObject game_clear_popup;
     [SerializeField] GameObject game_over_popup;
+    [SerializeField] GameObject[] heart;
+    [SerializeField] GameObject heartUI;
     [SerializeField] Text score_txt;
     [SerializeField] Text high_score_txt;
 
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
     private float high_score;
     private float current_score;
     private bool isClear = false;
+    private bool isSceneEnd = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isClear && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)))
+        if (TimeText.isArrived && !isClear)
+        {
+            gameClear();
+            isClear = true;
+        }
+        if (isSceneEnd && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)))
         {
             game_clear_popup.SetActive(true); // show score board
             setScore();
@@ -37,10 +45,11 @@ public class GameManager : MonoBehaviour
 
     void gameClear()
     {
+        heartUI.SetActive(false);
         // play effect sound
         game_clear.SetActive(true);
         StartCoroutine(FadeIn()); // fade in
-        isClear = true;
+        isSceneEnd = true;
     }
 
     void gameOver()
@@ -76,7 +85,7 @@ public class GameManager : MonoBehaviour
     void setScore()
     {
         current_score = TimeText.surviveTime;
-        // set heart img
+        heart[HeartSystem.Hp].SetActive(true); // set heart img
         if (current_score > high_score)
         {
             high_score = current_score;
@@ -84,7 +93,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.Save();
         }
         score_txt.text = current_score.ToString("N1") + "초 만에 집에 데려다 주었습니다!";
-        high_score_txt.text = "최고 기록: " + high_score.ToString("N1");
+        high_score_txt.text = "최고 기록: " + high_score.ToString("N1") +"초";
     }
 
     public void onClickRetry()
