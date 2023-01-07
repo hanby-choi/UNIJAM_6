@@ -18,8 +18,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerSpeed = 4f;
-        changeRateMin = 1f;
-        changeRateMax = 10f;
+        changeRateMin = 0.5f;
+        changeRateMax = 1f;
 
         playerVelocity = new Vector2(playerSpeed, 0);    //  player의 초기속도 선언
         playerRigidbody = GetComponent<Rigidbody2D>();    //  게임 오브젝트에서 2D Rigidbody component 찾아서 playerRigidbody에 할당
@@ -36,6 +36,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         timeAfterChange += Time.deltaTime;      //  마지막 방향 전환 이후 시간 측정
+
+        /*playerVelocity = Vector2(playerSpeed * transform.forward);
+        playerRigidbody.velocity = playerVelocity;  */
+
 
         if(timeAfterChange >= changeRate)   //  방향전환 주기보다 클 경우
         {

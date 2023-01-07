@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float rotationSpeed;
     void Start()
     {
-        
+        rotationSpeed = 30f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKey(KeyCode.RightArrow))
+            transform.Rotate(0, 0, Time.deltaTime * rotationSpeed);
+
+        if(Input.GetKey(KeyCode.LeftArrow))
+            transform.Rotate(0, 0, -Time.deltaTime * rotationSpeed);
+
     }
 }
