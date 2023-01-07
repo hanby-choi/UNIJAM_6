@@ -37,5 +37,4 @@ public class TimeText : MonoBehaviour
             Player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0); 
         }
     }
-
 }
