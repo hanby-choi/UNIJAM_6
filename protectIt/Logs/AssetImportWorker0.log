@@ -61,7 +61,7 @@ Domain Reload Profiling:
 			RebuildScriptCaches (25ms)
 			SetupLoadedEditorAssemblies (145ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
+				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (41ms)
 				BeforeProcessingInitializeOnLoad (11ms)
@@ -200,6 +200,20 @@ Received Import Request.
 Start importing Assets/Scenes/PlayerMovement.cs using Guid(ea59785cb8b38d7418bdebe7ec3d0cb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '697de7a81f0792c4127f84c21f576bef') in 0.011783 seconds 
   Import took 0.014780 seconds .
 
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2633.
+Total: 2.770500 ms (FindLiveObjects: 0.139800 ms CreateObjectMapping: 0.041500 ms MarkObjects: 2.567000 ms  DeleteObjects: 0.020900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
