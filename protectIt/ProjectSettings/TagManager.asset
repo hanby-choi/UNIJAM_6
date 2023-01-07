@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Item
   - Trigger
+  - Destination
   layers:
   - Default
   - TransparentFX
