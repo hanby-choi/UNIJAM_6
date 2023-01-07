@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
     {
         game_clear_img = game_clear.GetComponent<Image>();
         high_score = PlayerPrefs.GetInt("high_score", 0);
-        gameClear();
     }
 
     // Update is called once per frame
