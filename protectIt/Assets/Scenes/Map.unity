@@ -11115,7 +11115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603074154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.5, y: 8.43, z: 0}
+  m_LocalPosition: {x: 24.1, y: -40.6, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 1766094249}
@@ -11252,6 +11252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6302cbf128bc14cbfdd5f2a28f90e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioManager: {fileID: 1059226406}
   player: {fileID: 603074154}
   increaseRate: 2
   itemDelayTime: 3
@@ -11267,6 +11268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0eb3a25c841e54189f1cc751328f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioManager: {fileID: 1059226406}
 --- !u!114 &603074162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11279,6 +11281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4978773a485f11e4c9f4607d015a9f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioManager: {fileID: 1059226406}
   heartUI:
   - {fileID: 1563952596}
   - {fileID: 2137584700}
@@ -11297,7 +11300,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea59785cb8b38d7418bdebe7ec3d0cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioManager: {fileID: 1059226406}
   playerRigidbody: {fileID: 603074156}
+  playerVelocity: {x: 0, y: 0}
   playerSpeed: 4
   changeRateMin: 1
   changeRateMax: 10
