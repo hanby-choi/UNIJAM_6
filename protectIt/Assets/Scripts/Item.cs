@@ -42,7 +42,6 @@ public class Item : MonoBehaviour
                 AudioManager.GetComponent<EffectControl>().playCrash();
                 player.GetComponent<PlayerMovement>().playerVelocity = player.GetComponent<PlayerMovement>().playerVelocity * increaseRate;  //이동속도 증가(효과)
                 isCrashed = true;                   //충돌 처리
-                Debug.Log("인식됨.");
             }
         }
     }
