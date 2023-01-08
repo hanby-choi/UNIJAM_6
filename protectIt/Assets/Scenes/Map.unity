@@ -327,7 +327,7 @@ MonoBehaviour:
   - {fileID: 831211818}
   - {fileID: 1036146372}
   - {fileID: 1772382154}
-  item_DashNumber: 4
+  item_DashNumber: 5
 --- !u!4 &44141195
 Transform:
   m_ObjectHideFlags: 0
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carPrefab1: {fileID: 2345165400579108576, guid: c5501d3add2c1b24d8b88a2024351adf, type: 3}
-  spawnRate1: 3
+  spawnRate1: 5
 --- !u!1 &75598986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,7 +2121,7 @@ MonoBehaviour:
   - {fileID: 1927698109}
   - {fileID: 415456874}
   - {fileID: 852026342}
-  obstacleNumber: 8
+  obstacleNumber: 12
 --- !u!4 &379620929
 Transform:
   m_ObjectHideFlags: 0
@@ -2682,7 +2682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carPrefab3: {fileID: 7949103334472469864, guid: 5cb391c27515d2a4ea518c0295c41676, type: 3}
-  spawnRate3: 3
+  spawnRate3: 5
 --- !u!1 &471900659 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 451168650678043926, guid: 200feaa5c19b9fd4a8870e0acd3ca11e, type: 3}
@@ -11610,10 +11610,10 @@ MonoBehaviour:
   playerRigidbody: {fileID: 603074156}
   playerVelocity: {x: 0, y: 0}
   playerSpeed: 4
-  changeRateMin: 1
-  changeRateMax: 10
+  changeRateMin: 5
+  changeRateMax: 15
   cam: {fileID: 1766094248}
-  rotationSpeed: 60
+  rotationSpeed: 100
 --- !u!114 &603074165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12525,7 +12525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carPrefab4: {fileID: 4950278826484724440, guid: 731ca2522b40fa641980e53391150f89, type: 3}
-  spawnRate4: 3
+  spawnRate4: 5
 --- !u!1 &852026342 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1974963284650717097, guid: 81eba36c94ddf2a4ea9750a4b9840be3, type: 3}
@@ -24400,6 +24400,10 @@ PrefabInstance:
       value: Car1
       objectReference: {fileID: 0}
     - target: {fileID: 2345165400579108587, guid: c5501d3add2c1b24d8b88a2024351adf, type: 3}
+      propertyPath: carSpeed1
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345165400579108587, guid: c5501d3add2c1b24d8b88a2024351adf, type: 3}
       propertyPath: lifeTime1
       value: 4
       objectReference: {fileID: 0}
@@ -24568,7 +24572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carPrefab2: {fileID: 5650961579167905158, guid: 37460ca1d970aa34397ca985e215b5b9, type: 3}
-  spawnRate2: 3
+  spawnRate2: 5
 --- !u!1 &1655565287 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 451168650678043926, guid: 200feaa5c19b9fd4a8870e0acd3ca11e, type: 3}
@@ -24633,7 +24637,7 @@ MonoBehaviour:
   - {fileID: 1155668346}
   - {fileID: 1276329237}
   - {fileID: 1703223140}
-  item_HealNumber: 3
+  item_HealNumber: 4
 --- !u!4 &1657190267
 Transform:
   m_ObjectHideFlags: 0
@@ -106937,7 +106941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8506269311424119336, guid: c3be0585f7304cc469b9eec14d4bcf10, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3be0585f7304cc469b9eec14d4bcf10, type: 3}
