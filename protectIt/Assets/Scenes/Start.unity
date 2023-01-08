@@ -1934,7 +1934,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2
-  m_Text: "\uAE30\uD68D \uC774\uC11C\uD604\n\uBA54\uC778 \uD504\uB85C\uADF8\uB798\uBA38
+  m_Text: "PM / \uAE30\uD68D \uC774\uC11C\uD604\n\uBA54\uC778 \uD504\uB85C\uADF8\uB798\uBA38
     \uCD5C\uD55C\uBE44\n\uC11C\uBE0C \uD504\uB85C\uADF8\uB798\uBA38 \uBA85\uD0DC\uC2DD\n\uC544\uD2B8
     \uBC31\uC9C0\uC740"
 --- !u!222 &786270580
@@ -3267,7 +3267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 88b3f728d2c1ce94dad8301ca1f41c86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a501c2136e006e4eb04807e064b30bf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6245,7 +6245,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9c20ebf2e0f5f414a89b283fbcb99734, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ef5d7942d3be76459fae83ef777fc10, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
