@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     void gameClear()
     {
+        fade_panel.SetActive(true);
         AudioManager.GetComponent<EffectControl>().playEndingBGM(); // 브금 변경
         heartUI.SetActive(false); // 플레이어 하트 비활성화
         StartCoroutine(FadeIn()); // 첫 이미지 fade in
