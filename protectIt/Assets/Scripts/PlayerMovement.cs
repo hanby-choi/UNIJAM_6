@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] GameObject AudioManager;
     public Rigidbody2D playerRigidbody;  //  이동에 사용할 rigidbody component
     private SpriteRenderer playerSRenderer; //Xflip에 사용할 객체
     public Vector2 playerVelocity; //  player의 속도벡터
@@ -28,8 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
         timeAfterChange = 0f;
         changeRate = Random.Range(changeRateMin, changeRateMax);    //방향전환 주기 값 설정(Random)
-
-        
     }
 
     
@@ -51,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerVelocity = -playerVelocity;  //player의 이동 방향 전환
             playerSRenderer.flipX = !playerSRenderer.flipX;         //player flipX
-
+            AudioManager.GetComponent<EffectControl>().playWind();
             timeAfterChange = 0f;           //  측정시간 0으로 초기화
             changeRate = Random.Range(changeRateMin, changeRateMax);    //방향전환 주기 값 재설정
         }

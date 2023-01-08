@@ -49,7 +49,7 @@ public class UI_SoundControl : MonoBehaviour
     public IEnumerator destroy_sound()
     {
         bgm_audio_source.Stop();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         Destroy(SoundManager);
     }
 }

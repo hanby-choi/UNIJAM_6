@@ -36,4 +36,9 @@ public class StartManager : MonoBehaviour
         effect_audio_source.clip = ui_click;
         effect_audio_source.Play();
     }
+
+    public void OnQuitBtn()
+    {
+        Application.Quit();
+    }
 }
