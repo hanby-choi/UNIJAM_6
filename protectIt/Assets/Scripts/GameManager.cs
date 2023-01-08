@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject AudioManager;
-    [SerializeField] GameObject game_clear;
+    [SerializeField] GameObject[] ending; // 엔딩 일러스트 3장
+    [SerializeField] GameObject fade_panel;
     [SerializeField] GameObject game_clear_popup;
     [SerializeField] GameObject game_over_popup;
     [SerializeField] GameObject[] heart;
@@ -15,12 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text score_txt;
     [SerializeField] Text high_score_txt;
 
-    private Image game_clear_img;
+    private Image fade_panel_img;
     private float high_score;
     private float current_score;
     private bool isClear = false;
     private bool isOver = false;
     private bool isSceneEnd = false;
+    private bool isFadeOut = false;
+    private int ending_num = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +31,8 @@ public class GameManager : MonoBehaviour
         AudioManager.GetComponent<EffectControl>().playRandomBGM();
         UI_SoundControl.game_started = true; // 게임 시작 - 기존 오디오 소스 파괴
         StartCoroutine(endGameStarted());
+        fade_panel_img = fade_panel.GetComponent<Image>();
         Time.timeScale = 1;
-        game_clear_img = game_clear.GetComponent<Image>();
-        //PlayerPrefs.DeleteKey("high_score");
         high_score = PlayerPrefs.GetFloat("high_score", 999);
     }
 
@@ -48,20 +50,21 @@ public class GameManager : MonoBehaviour
             gameClear();
             isClear = true;
         }
-        if (isSceneEnd && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)))
+        if (isSceneEnd && isFadeOut && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)))
         {
-            game_clear_popup.SetActive(true); // show score board
-            setScore();
-            StartCoroutine(FadeOut()); // fade out
+            if (ending_num == 1 || ending_num == 2 || ending_num == 3)
+            {
+                StartCoroutine(FadeIn());
+            }
+            isFadeOut = false;
         }
     }
 
     void gameClear()
     {
-        AudioManager.GetComponent<EffectControl>().playEndingBGM();
-        heartUI.SetActive(false);
-        game_clear.SetActive(true);
-        StartCoroutine(FadeIn()); // fade in
+        AudioManager.GetComponent<EffectControl>().playEndingBGM(); // 브금 변경
+        heartUI.SetActive(false); // 플레이어 하트 비활성화
+        StartCoroutine(FadeIn()); // 첫 이미지 fade in
         isSceneEnd = true;
     }
 
@@ -79,11 +82,16 @@ public class GameManager : MonoBehaviour
         {
             fadeCount -= 0.01f;
             yield return new WaitForSeconds(0.01f);
-            game_clear_img.color = new Color(255, 255, 255, fadeCount);
+            fade_panel_img.color = new Color(255, 255, 255, fadeCount);
         }
-        game_clear_img.color = new Color(255, 255, 255, 0.8f);
-        game_clear.SetActive(false);
-        Time.timeScale = 0;
+        //fade_panel_img.color = new Color(255, 255, 255, 0.8f);
+        ending_num++;
+        isFadeOut = true;
+        if (ending_num == 4)
+        {
+            fade_panel.SetActive(false);
+            Time.timeScale = 0;
+        }
     }
 
     public IEnumerator FadeIn()
@@ -93,8 +101,22 @@ public class GameManager : MonoBehaviour
         {
             fadeCount += 0.01f;
             yield return new WaitForSeconds(0.01f);
-            game_clear_img.color = new Color(255, 255, 255, fadeCount);
+            fade_panel_img.color = new Color(255, 255, 255, fadeCount);
         }
+        if (ending_num == 0)
+        {
+            ending[ending_num].SetActive(true);
+        } else if (ending_num == 1 || ending_num == 2)
+        {
+            ending[ending_num - 1].SetActive(false);
+            ending[ending_num].SetActive(true);
+        } else
+        {
+            ending[ending_num - 1].SetActive(false);
+            game_clear_popup.SetActive(true); // show score board
+            setScore();
+        }
+        StartCoroutine(FadeOut());
     }
 
     public IEnumerator endGameStarted()
