@@ -1,5 +1,4 @@
 # UNIJAM 6팀 - Save the Sleeping Bunny
- 
 ![Save the Sleeping Bunny 시작 화면](https://github.com/seohyun-lee/UNIJAM_Bunny_Web/assets/32611398/f370aa4d-0d56-46f1-a9b9-e1115bf4e32b)
 
 ## 프로젝트 소개 
@@ -13,7 +12,7 @@
 ## 팀 소개
 대학생 연합 게임잼 'UNIJAM'을 통해 만나게 된 대학생 네 명이 즉흥적으로 제작하게 된 게임입니다. PMꞏ기획ꞏ서브 아트 이서현(이화여대), 메인 프로그래머 최한비(이화여대), 서브 프로그래머 명태식(카이스트), 메인 아트 백지은(포항공대)이 함께 만들었습니다.
 
-## 배포 페이지
+## 플레이 페이지
 https://hanby-choi.github.io/UNIJAM_Bunny_Web/
 
 ## 플레이 영상
